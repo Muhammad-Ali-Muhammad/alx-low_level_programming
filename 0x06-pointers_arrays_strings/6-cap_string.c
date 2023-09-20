@@ -1,39 +1,32 @@
-#include<stdio.h>
+#include "main.h"
+#include <stdio.h>
 
 /**
- * upper - a function ...
- * @c: the caractere
- *
- * Return: 1 or 0.
- */
-
-char	upper(char c)
+  * cap_string - ...
+  * @s: ...
+  *
+  * Return: char value
+  */
+char *cap_string(char *s)
 {
-	char	car;
+	int a = 0, i;
+	int cspc = 13;
+	char spc[] = {32, '\t', '\n', 44, ';', 46, '!', '?', '"', '(', ')', '{', '}'};
 
-	if (c >= 'a' && c <= 'z')
-		car = c + 'A' - 'a';
-	else
-		car = c;
-	return (car);
-}
-
-/**
- * cap_string - a function ...
- * @str: the chaine of caractere
- *
- * Return: str
- */
-
-char	*cap_string(char *str)
-{
-	int	i;
-
-	i = 0;
-	while (str[i])
+	while (s[a])
 	{
-		str[i] = upper(str[i]);
-		i++;
+		i = 0;
+
+		while (i < cspc)
+		{
+			if ((a == 0 || s[a - 1] == spc[i]) && (s[a] >= 97 && s[a] <= 122))
+				s[a] -= 32;
+
+			i++;
+		}
+
+		a++;
 	}
-	return (str);
+
+	return (s);
 }
